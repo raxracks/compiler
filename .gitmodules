@@ -1,0 +1,3 @@
+[submodule "slibs"]
+	path = slibs
+	url = https://git.samahh.dev/sam/slibs
