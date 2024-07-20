@@ -59,7 +59,7 @@ Token* tokenize(char* input) {
 }
 
 Token* token_create(char* value, TokenType type, Token* root) {
-    Token* new_token = malloc(sizeof(Token));
+    Token* new_token = calloc(1, sizeof(Token));
     new_token->value = value;
     new_token->type = type;
 
