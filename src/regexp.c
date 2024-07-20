@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <regexp.h>
 
+int regex_exec_char(const regex_t *preg, const char c, size_t nmatch, regmatch_t pmatch[], int eflags) {
+    char str[2] = {c, '\0'};
+
+    return regexec(preg, str, nmatch, pmatch, eflags);
+}
+
 void regex_step(char** input, char* c) {
     (*input)++;
     *c = **input;
@@ -20,8 +26,8 @@ regex_t regex_create(const char* pattern, int flags) {
     return regex;
 }
 
-int match_char(regex_t regex, char c) {
-    return regnexec(&regex, &c, 1, 0, NULL, 0) != REG_NOMATCH;
+int match_char(regex_t regex, const char c) {
+    return regex_exec_char(&regex, c, 0, NULL, 0) != REG_NOMATCH;
 }
 
 sl_string collect_until(match_func matcher, regex_t regex, char** input) {
