@@ -1,4 +1,5 @@
 #include <ast.h>
+#include <helpers.h>
 
 const char* ASTTypeText[] = {
     "Program",
@@ -51,13 +52,6 @@ ASTNode* ast_walk(Token** token) {
 
 void ast_step(Token** token) {
     (*token) = (*token)->next;
-}
-
-char* gen_ident(int indent) {
-    char* text = malloc(sizeof(char) * (indent + 1));
-    memset(text, ' ', indent);
-    text[indent] = '\0';
-    return text;
 }
 
 void ast_print(ASTNode* node, int indent) {

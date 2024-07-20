@@ -3,7 +3,7 @@
 #include <tokenizer.h>
 #include <ast.h>
 #include <codegen.h>
-#include <tcc/libtcc.h>
+#include <libtcc.h>
 
 int main(int argc, char* argv[]) {
     assert(argc > 2);
@@ -30,10 +30,10 @@ int main(int argc, char* argv[]) {
     printf("%s\n\n", code);
 
     TCCState* state = tcc_new();
+    tcc_set_lib_path(state, "tcc");
     assert(tcc_set_output_type(state, TCC_OUTPUT_EXE)   == 0);
-    tcc_set_lib_path(state, "lib/tcc");
-    assert(tcc_add_include_path(state, "std")       == 0);
-    assert(tcc_add_file(state, "std/std.c")     == 0);
+    assert(tcc_add_include_path(state, "std")           == 0);
+    assert(tcc_add_file(state, "std/std.c")             == 0);
     assert(tcc_compile_string(state, code)              == 0);
     assert(tcc_output_file(state, argv[2])              == 0);
 
