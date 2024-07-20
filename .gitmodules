@@ -1,5 +1,5 @@
 [submodule "slibs"]
-	path = slibs
+	path = include/slibs
 	url = https://git.samahh.dev/sam/slibs
 [submodule "tcc"]
 	path = tcc
