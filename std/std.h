@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #ifndef __RUNTIME_H__
 #define __RUNTIME_H__
 
