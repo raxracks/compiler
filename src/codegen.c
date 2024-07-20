@@ -3,7 +3,7 @@
 
 const char* codegen(ASTNode* node) {
     if(node->type == AST_PROGRAM) {
-        sl_string code = sl_string("#include <runtime.h>\n\nint main() {\n");
+        sl_string code = sl_string("#include <std.h>\n\nint main() {\n");
         for(sl_vec_it(n, node->body)) {
             sl_append_c_str(&code, codegen(*n));
             sl_append_c_str(&code, ";\n");

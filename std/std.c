@@ -1,4 +1,4 @@
-#include "runtime.h"
+#include "std.h"
 #include <stdio.h>
 
 int add(int a, int b) {

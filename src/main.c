@@ -32,8 +32,8 @@ int main(int argc, char* argv[]) {
     TCCState* state = tcc_new();
     assert(tcc_set_output_type(state, TCC_OUTPUT_EXE)   == 0);
     tcc_set_lib_path(state, "lib/tcc");
-    assert(tcc_add_include_path(state, "runtime")       == 0);
-    assert(tcc_add_file(state, "runtime/runtime.c")     == 0);
+    assert(tcc_add_include_path(state, "std")       == 0);
+    assert(tcc_add_file(state, "std/std.c")     == 0);
     assert(tcc_compile_string(state, code)              == 0);
     assert(tcc_output_file(state, argv[2])              == 0);
 
