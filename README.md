@@ -8,4 +8,11 @@ run ```git clone https://git.samahh.dev/sam/compiler --recursive```
 to compile run `make`
 
 #### running
-to run the example run `make run`, or to compile another file run `./compiler filename.lisp binaryname`
+to run the example run `make run`, or to compile another file run either 
+```
+./compiler run filename.lisp
+```
+or 
+```
+./compiler build filename.lisp binaryname
+```
