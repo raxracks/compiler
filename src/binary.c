@@ -17,13 +17,9 @@ int binary_produce(const char* code, Args args) {
     assert(tcc_add_file(state, "std/std.c")                     == 0);
     assert(tcc_compile_string(state, code)                      == 0);
 
-    int ret = -1;
     if(args.build) {
-        ret = tcc_output_file(state, args.output);
-        printf("Binary produced: %s\n", args.output);
+        return tcc_output_file(state, args.output);
     } else {
-        ret = tcc_run(state, 0, NULL);
+        return tcc_run(state, 0, NULL);
     }
-
-    return ret;
 }

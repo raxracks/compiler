@@ -1,8 +1,8 @@
 BINARY=compiler
 
 CC=gcc
-CFLAGS=-O3 -Iinclude -Itcc
-LDFLAGS=-Ltcc -ltcc
+CFLAGS=-Iinclude -Itcc -Ofast -flto
+LDFLAGS=-Ltcc -ltcc -Ofast
 
 CFILES=$(shell find -L src -type f -name '*.c')
 OBJ=$(CFILES:.c=.o)

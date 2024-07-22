@@ -14,7 +14,8 @@ int main(int argc, char* argv[]) {
     sl_read_file(args.input, &buffer);
 
     printf("Tokens:\n");
-    Token* tokens = tokenize(sl_c_str(buffer));
+    TokenVec tokens = { 0 };
+    tokenize(sl_c_str(buffer), &tokens);
     tokens_print(tokens);
     printf("\n");
 

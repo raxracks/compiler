@@ -14,13 +14,14 @@ typedef enum TokenType {
 typedef struct Token {
     char* value;
     TokenType type;
-    struct Token* next;
 } Token;
 
-Token* tokenize(char* input);
+typedef sl_vec(Token*) TokenVec;
 
-Token* token_create(char* value, TokenType type, Token* root);
+void tokenize(char* input, TokenVec* tokens);
+
+Token* token_create(char* value, TokenType type);
 Token* token_append(Token* root, Token* new_token);
-void tokens_print(Token* root);
+void tokens_print(TokenVec tokens);
 
 #endif
