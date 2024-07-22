@@ -15,5 +15,5 @@ to run the example run `make run`, or to compile another file run either
 ```
 or 
 ```
-./compiler build filename.lisp binaryname
+./compiler build filename.lisp -o outputname
 ```

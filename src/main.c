@@ -5,28 +5,30 @@
 #include <ast.h>
 #include <codegen.h>
 #include <binary.h>
-#include <helpers.h>
+#include <args.h>
 
 int main(int argc, char* argv[]) {
     Args args = parse_args(argc, argv);
 
-    sl_string buffer = { 0 };
-    sl_read_file(args.input, &buffer);
+    sl_string* input_str = sl_read_file(args.input);
+    if(!input_str) return -1;
+    char* input = sl_c_str(*input_str);
 
-    printf("Tokens:\n");
+    int debug = args.comp_debug;
+    if(debug) printf("Tokens:\n");
     TokenVec tokens = { 0 };
-    tokenize(sl_c_str(buffer), &tokens);
-    tokens_print(tokens);
-    printf("\n");
+    tokenize(input, &tokens);
+    if(debug) tokens_print(tokens);
+    if(debug)  printf("\n");
 
-    printf("AST:\n");
+    if(debug) printf("AST:\n");
     ASTNode* program = ast_parse(&tokens);
-    ast_print(program, 0);
-    printf("\n");
+    if(debug) ast_print(program, 0);
+    if(debug) printf("\n");
 
-    printf("Codegen:\n");
+    if(debug) printf("Codegen:\n");
     const char* code = codegen(program);
-    printf("%s\n\n", code);
+    if(debug) printf("%s\n\n", code);
 
     binary_produce(code, args);
 

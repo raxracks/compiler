@@ -16,8 +16,15 @@ $(BINARY): $(OBJ) Makefile tcc/libtcc1.a
 run: $(BINARY)
 	./$(BINARY) run example.lisp
 
+run-debug: $(BINARY)
+	./$(BINARY) run example.lisp -d yes
+
 run-build: $(BINARY)
-	./$(BINARY) build example.lisp example
+	./$(BINARY) build example.lisp -o example
+	./example
+
+run-build-debug: $(BINARY)
+	./$(BINARY) build example.lisp -o example -d yes
 	./example
 
 tcc/libtcc1.a:
