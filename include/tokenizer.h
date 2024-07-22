@@ -21,5 +21,6 @@ Token* tokenize(char* input);
 
 Token* token_create(char* value, TokenType type, Token* root);
 Token* token_append(Token* root, Token* new_token);
+void tokens_print(Token* root);
 
 #endif

@@ -36,5 +36,5 @@ const char* codegen(ASTNode* node) {
         return sl_c_str(code);
     }
 
-    return "";
+    return NULL;
 }

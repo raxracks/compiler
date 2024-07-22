@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "string.h": "c"
+        "string.h": "c",
+        "bitset": "c",
+        "initializer_list": "c",
+        "string": "c",
+        "string_view": "c",
+        "assert.h": "c"
     }
 }

@@ -14,11 +14,14 @@ $(BINARY): $(OBJ) Makefile tcc/libtcc1.a
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(BINARY)
-	./$(BINARY) example.lisp example
+	./$(BINARY) run example.lisp
+
+run-build: $(BINARY)
+	./$(BINARY) build example.lisp example
 	./example
 
 tcc/libtcc1.a:
-	cd tcc && ./configure
+	cd tcc && ./configure --cc=$(CC)
 	make -C tcc
 
 clean:

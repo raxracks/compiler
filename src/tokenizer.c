@@ -75,3 +75,10 @@ Token* token_append(Token* root, Token* new_token) {
     current->next = new_token;
     return root;
 }
+
+void tokens_print(Token* root) {
+    while(root != NULL) {
+        printf("%s: %s\n", TokenTypeText[root->type], root->value);
+        root = root->next;
+    }
+}
