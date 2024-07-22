@@ -24,8 +24,8 @@ typedef struct ASTNode {
     ASTVec params;
 } ASTNode;
 
-ASTNode* ast_parse(TokenVec* token);
-ASTNode* ast_walk(TokenVec* token);
+ASTNode* ast_parse(TokenVec* tokens);
+ASTNode* ast_walk(TokenVec* tokens);
 void ast_print(ASTNode* node, int indent);
 ASTNode* ast_create_empty(ASTType type);
 ASTNode* ast_create_program(ASTVec body);

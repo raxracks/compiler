@@ -8,42 +8,42 @@ const char* ASTTypeText[] = {
     "StringLiteral"
 };
 
-ASTNode* ast_parse(TokenVec* token) {
+ASTNode* ast_parse(TokenVec* tokens) {
     ASTVec body = { 0 };
 
-    Token** end = sl_vec_end(*token);
-    while(token->data != end) {
-        sl_vec_push(body, ast_walk(token));
+    Token** end = sl_vec_end(*tokens);
+    while(tokens->data != end) {
+        sl_vec_push(body, ast_walk(tokens));
     }
 
     return ast_create_program(body);
 }
 
-ASTNode* ast_walk(TokenVec* token) {
-    if(token->data[0]->type == TOKEN_NUMBER) {
-        ASTNode* number = ast_create_number_literal(token->data[0]->value);
-        sl_vec_forward(*token);
+ASTNode* ast_walk(TokenVec* tokens) {
+    if(tokens->data[0]->type == TOKEN_NUMBER) {
+        ASTNode* number = ast_create_number_literal(tokens->data[0]->value);
+        sl_vec_forward(*tokens);
         return number;
     }
 
-    if(token->data[0]->type == TOKEN_STRING) {
-        ASTNode* string = ast_create_string_literal(token->data[0]->value);
-        sl_vec_forward(*token);
+    if(tokens->data[0]->type == TOKEN_STRING) {
+        ASTNode* string = ast_create_string_literal(tokens->data[0]->value);
+        sl_vec_forward(*tokens);
         return string;
     }
 
-    if(token->data[0]->type == TOKEN_LPAREN) { // Call expression
-        sl_vec_forward(*token);
-        const char* name = token->data[0]->value;
+    if(tokens->data[0]->type == TOKEN_LPAREN) { // Call expression
+        sl_vec_forward(*tokens);
+        const char* name = tokens->data[0]->value;
         ASTVec params = { 0 };
 
-        sl_vec_forward(*token);
+        sl_vec_forward(*tokens);
 
-        while(token->data[0]->type != TOKEN_RPAREN) {
-            sl_vec_push(params, ast_walk(token));
+        while(tokens->data[0]->type != TOKEN_RPAREN) {
+            sl_vec_push(params, ast_walk(tokens));
         }
 
-        sl_vec_forward(*token);
+        sl_vec_forward(*tokens);
 
         return ast_create_call_expression(name, params);
     }
