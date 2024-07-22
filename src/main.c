@@ -36,7 +36,5 @@ int main(int argc, char* argv[]) {
         printf("%s\n\n", code);
     }
 
-    binary_produce(code, args);
-
-    return 0;
+    return binary_produce(code, args);
 }
