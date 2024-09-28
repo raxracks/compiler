@@ -1,0 +1,4 @@
+-Iinclude
+-Itcc
+-Ofast
+-flto

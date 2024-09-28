@@ -1,7 +1,7 @@
 BINARY=compiler
 
 CC=gcc
-CFLAGS=-Iinclude -Itcc -Ofast -flto
+CFLAGS=$(shell cat compile_flags.txt)
 LDFLAGS=-Ltcc -ltcc -Ofast
 
 CFILES=$(shell find -L src -type f -name '*.c')
