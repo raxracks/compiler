@@ -28,7 +28,7 @@ run-build-debug: $(BINARY)
 	./example
 
 tcc/libtcc1.a:
-	cd tcc && ./configure --cc=$(CC)
+	cd tcc && ./configure --cc=$(CC) --with-selinux
 	make -C tcc
 
 clean:
